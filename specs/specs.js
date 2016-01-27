@@ -4,7 +4,7 @@ describe("Hangman", function() {
     expect(newGame.chooseWord()).to.be.a('array');
   });
 
-  it("creates a empty array with the same length as random word", function() {
-    expect(String.length).to.equal(newArray.length);
+  it("creates a copy of original array", function() {
+    expect(newGame.chooseWord().length).to.be.a('number');
   });
 });
