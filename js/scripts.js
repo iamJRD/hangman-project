@@ -9,18 +9,8 @@ function Hangman(category) {
 Hangman.prototype.chooseWord = function(userInput) {
   var random = Math.floor(Math.random() * 5)
   if (userInput === "cities") {
-    return (cityArray[random]);
+    return (cityArray[random]).split("");
   } else {
-    return (animalArray[random]);
+    return (animalArray[random]).split("");
   };
 };
-
-var chosenArray = function() {
-  return Hangman.chooseCategory(userInput);
-
-}
-
-Hangman.prototype.word = function() {
-  console.log(chosenArray);
-  return chosenArray;
-}
