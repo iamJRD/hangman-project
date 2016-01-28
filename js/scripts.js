@@ -18,7 +18,7 @@ Hangman.prototype.chooseWord = function(userInput) {
 var copiedArray = function(randomArray) {
   randomArray = randomArray.join("");
   var copiedArray = randomArray.split("");
-  return(copiedArray)
+  return copiedArray;
 }
 
 var copiedBlankArray = function(randomArray) {
@@ -30,7 +30,7 @@ var copiedBlankArray = function(randomArray) {
 };
 
 var wrongRightLetter = function(letter, copiedArray, copiedBlankArray, wrongArray) {
-  if (wrongArray.length > 5) {
+  if (wrongArray.length > copiedArray.length) {
     return "fail";
   } else if (copiedBlankArray === copiedArray) {
     return "you win";
@@ -38,9 +38,12 @@ var wrongRightLetter = function(letter, copiedArray, copiedBlankArray, wrongArra
     wrongArray.push("x");
     return wrongArray;
   } else {
-    var index = copiedArray.indexOf(letter);
-        copiedBlankArray[index] = letter;
-        return copiedBlankArray;
+    for (var i = 0; i <= copiedArray.length; i++) {
+      if (copiedArray[i] === letter){
+        copiedBlankArray[i] = letter;
+      };
+    };
+    return copiedBlankArray;
   };
 };
 
@@ -54,10 +57,9 @@ $(document).ready(function() {
   $("form").submit(function() {
     event.preventDefault();
     if ($("select").val() === "animals") {
-      $("body").append(gameAnimals.chooseWord(gameAnimals.category));
+      $(".container").append(gameAnimals.chooseWord(gameAnimals.category));
     } else {
-      $("body").append(gameCities.chooseWord(gameCities.category));
+      $(".container").append(gameCities.chooseWord(gameCities.category));
     };
-    // gameOne.chooseWord(gameOne.category)
   });
 });
