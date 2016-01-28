@@ -1,0 +1,23 @@
+#categorySelect {
+  width: 50%;
+}
+
+/*#gameArea {
+  display: none;
+}*/
+
+.secretWord {
+  font-size: 50px;
+  letter-spacing: 10px;
+}
+
+.row-centered {
+  text-align: center;
+}
+
+.col-centered {
+  display: inline-block;
+  float: none;
+  text-align: center;
+  margin-right: -4px;
+}

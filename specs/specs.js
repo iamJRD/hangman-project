@@ -37,8 +37,6 @@ describe("Hangman", function() {
     expect(wrongRightLetter(letter, copiedArray, copiedBlankArray, wrongArray)).to.equal("fail");
   });
 
-
-/** NOT FINISHED **/
   it("check for duplicate letters", function() {
     var wrongArray = [];
     var letter = "p";

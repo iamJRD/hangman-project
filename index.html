@@ -10,18 +10,52 @@
     <title></title>
   </head>
   <body>
-    <div class="container">
-      <form>
-        <div class="form-group">
-          <label>Choose your category</label>
-          <select class="form-control">
-            <option value="animals" id="animals">Animals</option>
-            <option value="cities" id="cities">Cities</option>
-          </select>
+<!-- INITIALLY SHOWN -->
+    <div class="container jumboCont">
+      <div class="jumbotron text-center">
+        <div class="row row-centered">
+          <div class="col-md-4 col-centered">
+            <form id="categorySelect">
+              <div class="form-group">
+                <label>Choose your category</label>
+                <select class="form-control">
+                  <option value="animals" id="animals">Animals</option>
+                  <option value="cities" id="cities">Cities</option>
+                </select>
+              </div>
+              <button type="submit" name="button" class="btn btn-default">Submit</button>
+            </form>
+          </div>
         </div>
-        <button type="submit" name="button" class="btn btn-default">Submit</button>
-      </form>
+      </div>
     </div>
+<!-- END JUMOTRON/FORM; HIDDEN UPON SUBMIT -->
 
+    <div class="container" id="gameArea">
+      <div class="row">
+<!-- HANGMAN IMAGE -->
+        <div class="col-md-6" id="hangmanImage">
+          <img src="" alt="">
+        </div>
+
+        <div class="col-md-6" id="remainingGuesses">
+          <div class="letters">
+            <div id='g'>g</div>
+            <div id='i'>i</div>
+            <div id='a'>a</div>
+          </div>
+        </div>
+
+        <div class="row">
+<!-- BLANK SPACES/CORRECTLY GUESSED LETTERS -->
+          <div class="container">
+            <div class="col-md-6">
+              <p class="secretWord"></p>
+              <p class="guessingArea"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

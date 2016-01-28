@@ -36,10 +36,10 @@ var wrongRightLetter = function(letter, copiedArray, copiedBlankArray, wrongArra
     return "you win";
   } else if (copiedArray.indexOf(letter) === -1) {
     wrongArray.push("x");
-    return wrongArray;
+    return copiedBlankArray;
   } else {
     for (var i = 0; i <= copiedArray.length; i++) {
-      if (copiedArray[i] === letter){
+      if (copiedArray[i] === letter) {
         copiedBlankArray[i] = letter;
       };
     };
@@ -53,13 +53,34 @@ $(document).ready(function() {
   var chooseAnimals = $("#animals").val();
   var chooseCities = $("#cities").val();
   var wrongArray = [];
+  var animalChosen = gameAnimals.chooseWord(gameAnimals.category)
+  var cityChosen = gameCities.chooseWord(gameCities.category)
 
   $("form").submit(function() {
     event.preventDefault();
+    $(".jumboCont").hide();
+
     if ($("select").val() === "animals") {
-      $(".container").append(gameAnimals.chooseWord(gameAnimals.category));
+      $(".secretWord").append(animalChosen);
+      var copiedBlankArray1 = copiedBlankArray(animalChosen);
+      $(".letters").children().click(function(event) {
+        var copiedArray1 = copiedArray(animalChosen);
+        var letter = $(this).attr('id');
+        $(this).css("color","red");
+        $(".guessingArea").text(wrongRightLetter(letter, copiedArray1, copiedBlankArray1, wrongArray));
+                console.log(copiedBlankArray1);
+      });
     } else {
-      $(".container").append(gameCities.chooseWord(gameCities.category));
+      $(".secretWord").append(cityChosen);
+      var copiedBlankArray1 = copiedBlankArray(cityChosen);
+      $(".letters").children().click(function(event) {
+        var copiedArray1 = copiedArray(cityChosen);
+        var letter = $(this).attr('id');
+        $(this).css("color","red");
+        $(".guessingArea").append(wrongRightLetter(letter, copiedArray1, copiedBlankArray1, wrongArray));
+      });
     };
   });
+
+
 });
