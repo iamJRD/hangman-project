@@ -36,15 +36,15 @@ var wrongRightLetter = function(letter, copiedArray, copiedBlankArray, wrongArra
     return "you win";
   } else if (copiedArray.indexOf(letter) === -1) {
     wrongArray.push("x");
-    return copiedBlankArray;
   } else {
     for (var i = 0; i <= copiedArray.length; i++) {
       if (copiedArray[i] === letter) {
         copiedBlankArray[i] = letter;
       };
     };
-    return copiedBlankArray;
   };
+  // copiedBlankArray = copiedBlankArray.join(" ");
+  return copiedBlankArray;
 };
 
 $(document).ready(function() {
@@ -59,16 +59,26 @@ $(document).ready(function() {
   $("form").submit(function() {
     event.preventDefault();
     $(".jumboCont").hide();
+    if ($("select").val() === "animals") {
+      for (i = 0; i < animalChosen.length; i++) {
+        $(".tableArea").append("<td id =" + i + "></td>");
+      };
+    } else {
+      for (i = 0; i < cityChosen.length; i++) {
+        $(".tableArea").append("<td id =" + i + ">_</td>");
+      };
+    };
 
     if ($("select").val() === "animals") {
       $(".secretWord").append(animalChosen);
       var copiedBlankArray1 = copiedBlankArray(animalChosen);
       $(".letters").children().click(function(event) {
+        // $(i).append(letter);
         var copiedArray1 = copiedArray(animalChosen);
         var letter = $(this).attr('id');
+        $(".tableArea").append("<p>" + letter + "</p>");
         $(this).css("color","red");
         $(".guessingArea").text(wrongRightLetter(letter, copiedArray1, copiedBlankArray1, wrongArray));
-                console.log(copiedBlankArray1);
       });
     } else {
       $(".secretWord").append(cityChosen);
@@ -77,10 +87,8 @@ $(document).ready(function() {
         var copiedArray1 = copiedArray(cityChosen);
         var letter = $(this).attr('id');
         $(this).css("color","red");
-        $(".guessingArea").append(wrongRightLetter(letter, copiedArray1, copiedBlankArray1, wrongArray));
+        $(".guessingArea").text(wrongRightLetter(letter, copiedArray1, copiedBlankArray1, wrongArray));
       });
     };
   });
-
-
 });

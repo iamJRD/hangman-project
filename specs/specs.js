@@ -24,9 +24,9 @@ describe("Hangman", function() {
   it("check whether a letter is right and pushes it to copiedBlankArray", function() {
     var copiedArray = ["t","i","g","e","r"];
     var letter = "g";
-    var copiedBlankArray = ["","","","",""];
+    var copiedBlankArray = ["_","_","_","_","_"];
     var wrongArray = ["x","x","x","x","x"];
-    expect(wrongRightLetter(letter, copiedArray, copiedBlankArray, wrongArray)).to.eql(["","","g","",""]);
+    expect(wrongRightLetter(letter, copiedArray, copiedBlankArray, wrongArray)).to.eql(["_","_","g","_","_"]);
   });
 
   it("notifies you when you've lost the game",function() {
